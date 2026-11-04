@@ -1,9 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello from the robot!'
+                dir('complete'){
+                  sh 'chmod +x mvnw'
+                  sh './mvnw -B clean compile'
+                }
+
             }
         }
     }
