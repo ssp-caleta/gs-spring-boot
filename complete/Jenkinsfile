@@ -17,5 +17,13 @@ pipeline {
                 }
             }
         }
+        stage('Package') {
+            steps {
+                dir('complete') {
+                    sh './mvnw -B package -DskipTests'
+                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                }
+            }
+        }
     }
 }
