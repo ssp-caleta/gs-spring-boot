@@ -25,5 +25,12 @@ pipeline {
                 }
             }
         }
+        stage('Docker Build') {
+            steps {
+                dir('complete') {
+                    sh 'docker build -t spring-demo:${BUILD_NUMBER} .'
+                }
+            }
+        }
     }
 }
